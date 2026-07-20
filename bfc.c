@@ -126,12 +126,13 @@ int main(int argc, char **argv) {
 
   if(nasm)
     fprintf(out,
+      "BITS 64\n"
       "global _start\n"
       "\n"
-      ".section bss\n"
+      "section .bss\n"
       "bfc_buf resb %d\n"
       "\n"
-      ".section text\n"
+      "section .text\n"
       "_start:\n"
       "%*slea r12, [rel bfc_buf]\n"
     , memsize, indent * indsize, "");

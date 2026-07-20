@@ -3,8 +3,7 @@
     | BFC |
     +-----+
 
-    Brainfuck to C transpiler
-    Generates formatted C code
+    Code-formatting Brainfuck compiler and transpiler with codegen support for C and Linux x86_64 NASM
 */
 
 #include <stdio.h>

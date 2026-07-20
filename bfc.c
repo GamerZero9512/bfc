@@ -252,7 +252,7 @@ int main(int argc, char **argv) {
         if(!nasm) indent++;
         break;
       case ']':
-        if(indent <= 1) {
+        if(indent <= 1 && !nasm) {
           fprintf(stderr, "mismatched parenthesis%s\n", debug ? " (close)" : "");
           return 1;
         }
@@ -271,7 +271,7 @@ int main(int argc, char **argv) {
     }
     i++;
   }
-  if(indent != 1) {
+  if(indent != 1 && !nasm) {
     fprintf(stderr, "mismatched parenthesis%s\n", debug ? " (open)" : "");
     return 1;
   }

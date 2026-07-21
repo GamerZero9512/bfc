@@ -8,7 +8,7 @@ usage: bfc [options] [--] [infile]
 
 options:
   -h            show this help message
-  -t <c|nasm>   change output language
+  -t <target>   change output language (c, nasm, as)
   -O            enable optimisations
   -d            enable debug mode
   -o <file>     set output filename

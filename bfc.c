@@ -144,7 +144,8 @@ int main(int argc, char **argv) {
       "int main(void) {\n"
       "%*suint8_t bfc_buf[%d] = {0};\n"
       "%*suint8_t *bfc_ptr = bfc_buf;\n"
-    , indent * indsize, "", memsize, indent * indsize, "");
+      "%*sint bfc_ch;\n"
+    , indent * indsize, "", memsize, indent * indsize, "", indent * indsize, "");
 
   if(debug) fprintf(out, "%s END BFC PROLOGUE%s\n", nasm ? ";" : "/*", nasm ? "" : " */");
 
@@ -226,7 +227,8 @@ int main(int argc, char **argv) {
         fputc('\n', out);
         break;
       case ',':
-        if(nasm) fprintf(out, "%*smov rax, 0\n"
+        if(nasm) fprintf(out, "%*smov byte [r12], 0\n"
+                              "%*smov rax, 0\n"
                               "%*smov rdi, 0\n"
                               "%*smov rsi, r12\n"
                               "%*smov rdx, 1\n"
@@ -235,8 +237,10 @@ int main(int argc, char **argv) {
                               indent * indsize, "",
                               indent * indsize, "",
                               indent * indsize, "",
+                              indent * indsize, "",
                               indent * indsize, "");
-        else fprintf(out, "%*s*bfc_ptr = getchar();", indent * indsize, "");
+        else fprintf(out, "%*sif((bfc_ch = getchar()) == EOF) *bfc_ptr = 0;\n"
+                          "%*selse *bfc_ptr = bfc_ch;\n", indent * indsize, "", indent * indsize, "");
         if(debug) fprintf(out, " %s ,%s", nasm ? ";" : "/*", nasm ? "" : " */");
         fputc('\n', out);
         break;

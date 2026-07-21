@@ -367,10 +367,10 @@ int main(int argc, char **argv) {
         }
         if(debug) switch(target) {
           case TGT_C:
-            fprintf(out, "/* [ */");
+            fprintf(out, " /* [ */");
             break;
           case TGT_NASM:
-            fprintf(out, "; [");
+            fprintf(out, " ; [");
             break;
         }
         fputc('\n', out);
@@ -394,10 +394,10 @@ int main(int argc, char **argv) {
         }
         if(debug) switch(target) {
           case TGT_C:
-            fprintf(out, "/* ] */");
+            fprintf(out, " /* ] */");
             break;
           case TGT_NASM:
-            fprintf(out, "; ]");
+            fprintf(out, " ; ]");
             break;
         }
         fputc('\n', out);

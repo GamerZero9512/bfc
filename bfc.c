@@ -128,7 +128,8 @@ int main(int argc, char **argv) {
           }
           break;
         default:
-          fprintf(stderr, "unrecognised flag: '%c'\n", arg[j]);
+          fprintf(stderr, "unrecognised flag: '%c'\n"
+                          "try '-h' for help\n", arg[j]);
           return 1;
       }
     }

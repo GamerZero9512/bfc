@@ -91,10 +91,13 @@ int main(int argc, char **argv) {
           }
           j = strlen(arg) - 1;
 
-          out = fopen(output, "wb");
-          if(!out) {
-            fprintf(stderr, "error opening '%s': %s\n", output, strerror(errno));
-            return 1;
+          if(strcmp(output, "-") == 0) out = stdout;
+          else {
+            out = fopen(output, "wb");
+            if(!out) {
+              fprintf(stderr, "error opening '%s': %s\n", output, strerror(errno));
+              return 1;
+            }
           }
           break;
         case 'm':
@@ -144,10 +147,13 @@ int main(int argc, char **argv) {
   }
 
   if(input) {
-    in = fopen(input, "rb");
-    if(!in) {
-      fprintf(stderr, "error opening '%s': %s\n", input, strerror(errno));
-      return 1;
+    if(strcmp(input, "-") == 0) in = stdin;
+    else {
+      in = fopen(input, "rb");
+      if(!in) {
+        fprintf(stderr, "error opening '%s': %s\n", input, strerror(errno));
+        return 1;
+      }
     }
   }
 

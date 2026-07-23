@@ -3,7 +3,7 @@
     | BFI |
     +-----+
 
-    Tiny Brainf*ck interpreter
+    Tiny Brainfuck interpreter
     Part of the bfc project
 */
 

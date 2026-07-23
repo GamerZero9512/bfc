@@ -473,8 +473,8 @@ int main(int argc, char **argv) {
             else if(count < 0)   fprintf(out, "%*ssubl $%d, %%esi", indent * indsize, "", -count);
             break;
           case TGT_AARCH64_LINUX_AS:
-            if(count > 0)       fprintf(out, "%*sadd x19, x19, #%d\n", indent * indsize, "", count);
-            else if(count < 0)  fprintf(out, "%*ssub x19, x19, #%d\n", indent * indsize, "", -count);
+            if(count > 0)       fprintf(out, "%*sadd x19, x19, #%d", indent * indsize, "", count);
+            else if(count < 0)  fprintf(out, "%*ssub x19, x19, #%d", indent * indsize, "", -count);
         }
 
         if(debug) switch(target) {
@@ -714,7 +714,7 @@ int main(int argc, char **argv) {
             loopstack[looptop++] = id;
             fprintf(out, "loop%d:\n"
                          "%*scmpb $0, (%%esi)\n"
-                         "%*sje end%d\n", id, indent * indsize, "", indent * indsize, "", id);
+                         "%*sje end%d", id, indent * indsize, "", indent * indsize, "", id);
             break;
           case TGT_AARCH64_LINUX_AS:
             id = loopnext++;

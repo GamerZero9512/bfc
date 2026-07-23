@@ -1,18 +1,22 @@
 CC ?= cc
 
 ifeq ($(OS),Windows_NT)
-	TARGET ?= bfc.exe
+	BFC_TGT ?= bfc.exe
+	BFI_TGT ?= bfi.exe
 else
-	TARGET ?= bfc
+	BFC_TGT ?= bfc
+	BFI_TGT ?= bfi
 endif
 
 .PHONY: debug clean
 
-$(TARGET): bfc.c
-	$(CC) bfc.c -O2 -Wall -Wextra -pedantic -o $(TARGET)
+all: $(BFC_TGT) $(BFI_TGT)
 
-debug: bfc.c
-	$(CC) bfc.c -O0 -Wall -Wextra -pedantic -g3 -fsanitize=address,undefined,leak -o $(TARGET)
+$(BFC_TGT): bfc.c
+	$(CC) bfc.c -O2 -Wall -Wextra -pedantic -o $(BFC_TGT)
+
+$(BFI_TGT): bfi.c
+	$(CC) bfi.c -O2 -Wall -Wextra -pedantic -o $(BFI_TGT)
 
 clean:
-	rm -f $(TARGET)
+	rm -f $(BFC_TGT) $(BFI_TGT)

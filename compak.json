@@ -1,13 +1,13 @@
 {
   "name": "bfc",
-  "description": "Brainfuck compiler",
+  "description": "Brainfuck compiler and interpreter",
   "source": null,
   "compak-min": 1,
   "deps": [],
-  "exclude": [".git", ".gitignore", "bfc"],
-  "build": [["make"]],
+  "exclude": [".git", ".gitignore", "bfc", "bfi"],
+  "build": [["make", "clean", "all"]],
   "install": {
-    "bin": ["bfc"],
+    "bin": ["bfc", "bfi"],
     "lib": [],
     "include": [],
     "man": {}

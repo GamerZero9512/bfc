@@ -1,2 +1,9 @@
 # bfc
-Code-formatting Brainfuck compiler and transpiler with codegen support for C and Linux x86_64 NASM
+Code-formatting Brainfuck compiler
+
+Includes these tools:
+
+|bfc|Code-formatting Brainfuck compiler|
+|---|----------------------------------|
+|bfi|Relatively fast Brainfuck interpreter|
+|bfm|Tiny Brainfuck minifier|
